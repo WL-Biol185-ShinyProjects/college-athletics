@@ -12,23 +12,21 @@ names(ncaa_data) <- tolower(names(ncaa_data))
 #rearrange columns alphabetically
 ncaa_data <- ncaa_data[ , order(names(ncaa_data))]
 
+#delete unnecessary columns
+ncaa_data_selected <- ncaa_data %>%
+  select(-scl_unitid, -sport_code, -academic_year, -scl_sub_18, -d1_fb_conf_18, -elig_rate_2004, -elig_rate_2005, -elig_rate_2006, -elig_rate_2007, -elig_rate_2008, -elig_rate_2009, -elig_rate_2010, -elig_rate_2011, -elig_rate_2012, -elig_rate_2013, -elig_rate_2014, -elig_rate_2015, -elig_rate_2016, -elig_rate_2017, -elig_rate_2018, -ret_rate_2004, -ret_rate_2005, -ret_rate_2006, -ret_rate_2007, -ret_rate_2008, -ret_rate_2009, -ret_rate_2010, -ret_rate_2011, -ret_rate_2012, -ret_rate_2013, -ret_rate_2014, -ret_rate_2015, -ret_rate_2016, -ret_rate_2017, -ret_rate_2018, -data_tab_annualrate, -data_tab_generalinfo, -data_tab_multiyrrate, -datatab_publicaward)
+
 #gather columns
 #year_apr_rate
-ncaa_data <- gather(ncaa_data, key = "year_apr_rate", value = "apr_rate", apr_rate_2004_1000:apr_rate_2018_1000)
-
-#year_elig_rate
-ncaa_data <- gather(ncaa_data, key= "year_elig_rate", value= "elig_rate", elig_rate_2004:elig_rate_2018)
+ncaa_data_tidy <- gather(ncaa_data_selected, key = "year_apr_rate", value = "apr_rate", apr_rate_2004_1000:apr_rate_2018_1000)
 
 
 #year_pub_award
-ncaa_data <- gather(ncaa_data, key= "year_pub_award", value= "pub_award", pub_award_06:pub_award_19)
+ncaa_data_tidy <- gather(ncaa_data_tidy, key= "year_pub_award", value= "pub_award", pub_award_06:pub_award_19)
 
 
 #num_of_athletes
-ncaa_data <- gather(ncaa_data, key = "year_num_of_athletes", value = "num_of_athletes", num_of_athletes_2004:num_of_athletes_2018)
-
-#ret_rate
-ncaa_data <- gather(ncaa_data, key = "year_ret_rate", value = "ret_rate", ret_rate_2004:ret_rate_2018)
+ncaa_data_tidy <- gather(ncaa_data_tidy, key = "year_num_of_athletes", value = "num_of_athletes", num_of_athletes_2004:num_of_athletes_2018)
 
 
 
