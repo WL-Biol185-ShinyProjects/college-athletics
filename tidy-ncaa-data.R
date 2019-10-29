@@ -19,6 +19,9 @@ ncaa_data <- gather(ncaa_data, key = "year_apr_rate", value = "apr_rate", apr_ra
 #year_elig_rate
 ncaa_data <- gather(ncaa_data, key= "year_elig_rate", value= "elig_rate", elig_rate_2004:elig_rate_2018)
 
+#year_pub_award
+ncaa_data <- gather(ncaa_data, key= "year_pub_award", value= "pub_award", pub_award_06:pub_award_19)
+
 
 
 
