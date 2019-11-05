@@ -31,5 +31,10 @@ ncaa_data <- gather(ncaa_data, key = "year_num_of_athletes", value = "num_of_ath
 ncaa_data <- gather(ncaa_data, key = "year_ret_rate", value = "ret_rate", ret_rate_2004:ret_rate_2018)
 
 
+ 
 
-
+#making interactive plots
+# ?plotOutput
+#binding click event/brush event to inputId
+#direction- x- if you want to brush on x axis; y if you want to brush on y axis
+#resenOnNew=TRUE
