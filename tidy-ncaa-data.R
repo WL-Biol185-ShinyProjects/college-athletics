@@ -28,10 +28,12 @@ ncaa_data_tidy <- gather(ncaa_data_tidy, key= "year_pub_award", value= "pub_awar
 #num_of_athletes #may end up deleting all num_athletes columns or aggregating somehow
 #ncaa_data_tidy <- gather(ncaa_data_tidy, key = "year_num_of_athletes", value = "num_of_athletes", num_of_athletes_2004:num_of_athletes_2018)
 
-#extracting years
+#extracting years using substr()
+ncaa_data_tidy$year_apr_rate <- substr(ncaa_data_tidy$year_apr_rate, start=10, stop=13)
 
+ncaa_data_tidy$year_pub_award <- substr(ncaa_data_tidy$year_pub_award, start=11, stop=12)
 
- 
+ncaa_data_tidy$year_pub_award <- paste("20", ncaa_data_tidy$year_pub_award, sep="")
 
 #making interactive plots
 # ?plotOutput
@@ -39,16 +41,5 @@ ncaa_data_tidy <- gather(ncaa_data_tidy, key= "year_pub_award", value= "pub_awar
 #direction- x- if you want to brush on x axis; y if you want to brush on y axis
 #resenOnNew=TRUE
 
-#ifelse method
-ncaa_data_tidy$year_apr_rate <- ifelse("apr_rate_2004_1000" %in% ncaa_data_tidy$year_apr_rate, "2004", "other")
-
-#if method - need to use one of the apply functions to make work properly
-ncaa_data_tidy$year_apr_rate <- if(ncaa_data_tidy$year_apr_rate == "apr_rate_2004_1000"){
-  print(2004)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2005_1000"){
-    print(2005)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2006_1000"){
-      print(2006)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2007_1000"){
-        print(2007) 
-  }
-  
 
 
