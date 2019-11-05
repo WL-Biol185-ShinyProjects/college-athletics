@@ -25,9 +25,20 @@ ncaa_data_tidy <- gather(ncaa_data_selected, key = "year_apr_rate", value = "apr
 ncaa_data_tidy <- gather(ncaa_data_tidy, key= "year_pub_award", value= "pub_award", pub_award_06:pub_award_19)
 
 
-#num_of_athletes
-ncaa_data_tidy <- gather(ncaa_data_tidy, key = "year_num_of_athletes", value = "num_of_athletes", num_of_athletes_2004:num_of_athletes_2018)
+#num_of_athletes #may end up deleting all num_athletes columns or aggregating somehow
+#ncaa_data_tidy <- gather(ncaa_data_tidy, key = "year_num_of_athletes", value = "num_of_athletes", num_of_athletes_2004:num_of_athletes_2018)
 
+#extracting years
 
+#ifelse method
+ncaa_data_tidy$year_apr_rate <- ifelse("apr_rate_2004_1000" %in% ncaa_data_tidy$year_apr_rate, "2004", "other")
 
+#if method - need to use one of the apply functions to make work properly
+ncaa_data_tidy$year_apr_rate <- if(ncaa_data_tidy$year_apr_rate == "apr_rate_2004_1000"){
+  print(2004)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2005_1000"){
+    print(2005)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2006_1000"){
+      print(2006)} else if(ncaa_data_tidy$year_apr_rate == "apr_rate_2007_1000"){
+        print(2007) 
+  }
+  
 
