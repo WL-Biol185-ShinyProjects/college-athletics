@@ -11,8 +11,7 @@ fluidPage(
         inputId = "aprGroupBy",
         label = "Group by",
         choices = list(Conference= "confname_18",
-                       School= "scl_name",
-                       Sport="sport_name"
+                       School= "scl_name"
         ),
         selected = "confname_18",
         
@@ -22,7 +21,7 @@ fluidPage(
         label = "Schools",
         choices = unique(ncaa_data_tidy$scl_name),
         multiple=TRUE,
-        selected=unique(ncaa_data_tidy$scl_name),
+        selected=unique(ncaa_data_tidy$scl_name[1]),
       )
     ),
     mainPanel(

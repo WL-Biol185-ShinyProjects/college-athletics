@@ -41,13 +41,6 @@ ncaa_data_tidy$year_pub_award <- paste("20", ncaa_data_tidy$year_pub_award, sep=
 
 #replaced NA's with 0s in pub_award_column
 ncaa_data_tidy$pub_award[is.na(ncaa_data_tidy$pub_award)] <- 0
-#making interactive plots
-# ?plotOutput
-#binding click event/brush event to inputId
-#direction- x- if you want to brush on x axis; y if you want to brush on y axis
-#resenOnNew=TRUE
-#vapply
-
 
 
 test <- ncaa_data_tidy %>%

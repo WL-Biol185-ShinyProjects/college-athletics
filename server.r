@@ -1,0 +1,15 @@
+library(shiny)
+library(ggplot2)
+library(tidyverse)
+function(input, output){
+  
+  output$aprDensity <- renderPlot({
+    ncaa_data_tidy %>%
+      filter(scl_name %in% input$aprIncludeSchools) %>%
+      ggplot (aes_string("multiyr_apr_rate_1000_official", fill = input$aprGroupBy)) + 
+      geom_density(alpha=0.2)
+    
+  })
+  
+}
+
