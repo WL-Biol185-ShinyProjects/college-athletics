@@ -48,3 +48,10 @@ ncaa_data_tidy$year_pub_award <- paste("20", ncaa_data_tidy$year_pub_award, sep=
 #vapply
 
 
+
+test <- ncaa_data_tidy %>%
+  group_by(scl_name, sport_name) %>%
+  mutate(multiyr_pub_award = sum(pub_award))
+
+
+
