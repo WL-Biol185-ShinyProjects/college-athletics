@@ -76,3 +76,14 @@ ncaa_data_tidy$gender <- NA
 ncaa_data_tidy[ncaa_data_tidy$sport_code <=17, "gender"] <- "Male"
 ncaa_data_tidy[ncaa_data_tidy$sport_code  >=18 & ncaa_data_tidy$sport_code < 37, "gender"] <- "Female"
 ncaa_data_tidy[ncaa_data_tidy$sport_code ==37, "gender"] <- "Mixed"
+
+#apply gender column to all data frames
+multiyr_ncaa$gender <- NA
+multiyr_ncaa[multiyr_ncaa$sport_code <=17, "gender"] <- "Male"
+multiyr_ncaa[multiyr_ncaa$sport_code  >=18 & multiyr_ncaa$sport_code < 37, "gender"] <- "Female"
+multiyr_ncaa[multiyr_ncaa$sport_code ==37, "gender"] <- "Mixed"
+
+ncaa_by_year$gender <- NA
+ncaa_by_year[ncaa_by_year$sport_code <=17, "gender"] <- "Male"
+ncaa_by_year[ncaa_by_year$sport_code  >=18 & ncaa_by_year$sport_code < 37, "gender"] <- "Female"
+ncaa_by_year[ncaa_by_year$sport_code ==37, "gender"] <- "Mixed"
