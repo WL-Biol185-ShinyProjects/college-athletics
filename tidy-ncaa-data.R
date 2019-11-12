@@ -50,8 +50,18 @@ ncaa_data_tidy <- ncaa_data_tidy %>%
 
 #create multi year table
 multiyr_ncaa <- ncaa_data %>%
-  select(confname_18, multiyr_apr_rate_1000_official, multiyr_elig_rate, multiyr_ret_rate, multiyr_squad_size, scl_div_18, scl_hbcu, scl_name, scl_private, sport_code, sport_name)
+  select(confname_18, multiyr_apr_rate_1000_official, multiyr_elig_rate, multiyr_ret_rate, multiyr_squad_size, scl_div_18, scl_hbcu, scl_name, scl_private, sport_code, sport_name, pub_award_06, pub_award_07, pub_award_08, pub_award_09, pub_award_10, pub_award_11, pub_award_12, pub_award_13, pub_award_14, pub_award_15, pub_award_16, pub_award_17, pub_award_18, pub_award_19)
 
+#create mult year public award variable
+multiyr_ncaa <- gather(multiyr_ncaa, key= "year_pub_award", value= "pub_award", pub_award_06:pub_award_19)
 
+multiyr_ncaa$pub_award[is.na(multiyr_ncaa$pub_award)] <- 0
+
+multiyr_ncaa <- multiyr_ncaa %>%
+  group_by(scl_name, sport_name) %>%
+  mutate(multiyr_pub_award = sum(pub_award))
+
+multiyr_ncaa <- multiyr_ncaa %>%
+  select(-pub_award, -year_pub_award)
 
 
