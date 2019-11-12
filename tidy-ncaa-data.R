@@ -74,4 +74,5 @@ ncaa_by_year <- ncaa_data_tidy %>%
 
 ncaa_data_tidy$gender <- NA
 ncaa_data_tidy[ncaa_data_tidy$sport_code <=17, "gender"] <- "Male"
-ncaa_data_tidy[ncaa_data_tidy$sport_code  >=18, "gender"] <- "Female"
+ncaa_data_tidy[ncaa_data_tidy$sport_code  >=18 & ncaa_data_tidy$sport_code < 37, "gender"] <- "Female"
+ncaa_data_tidy[ncaa_data_tidy$sport_code ==37, "gender"] <- "Mixed"
