@@ -70,4 +70,8 @@ ncaa_by_year <- ncaa_data_tidy %>%
 
 
 
+#create gender column
 
+ncaa_data_tidy$gender <- NA
+ncaa_data_tidy[ncaa_data_tidy$sport_code <=17, "gender"] <- "Male"
+ncaa_data_tidy[ncaa_data_tidy$sport_code  >=18, "gender"] <- "Female"
