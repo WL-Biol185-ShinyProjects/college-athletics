@@ -64,4 +64,9 @@ multiyr_ncaa <- multiyr_ncaa %>%
 multiyr_ncaa <- multiyr_ncaa %>%
   select(-pub_award, -year_pub_award)
 
+#create table of data by year 
+ncaa_by_year <- ncaa_data_tidy %>%
+  select(-multiyr_apr_rate_1000_official, -multiyr_elig_rate, -multiyr_pub_award, -multiyr_ret_rate, -multiyr_squad_size)
+
+
 
