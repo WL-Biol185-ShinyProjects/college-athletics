@@ -48,6 +48,10 @@ ncaa_data_tidy <- ncaa_data_tidy %>%
   mutate(multiyr_pub_award = sum(pub_award))
 
 
+#create multi year table
+multiyr_ncaa <- ncaa_data %>%
+  select(confname_18, multiyr_apr_rate_1000_official, multiyr_elig_rate, multiyr_ret_rate, multiyr_squad_size, scl_div_18, scl_hbcu, scl_name, scl_private, sport_code, sport_name)
+
 
 
 
