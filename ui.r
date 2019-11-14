@@ -3,7 +3,9 @@ library(shiny)
 fluidPage(
   
   title= "APR Made Interactive",
-  titlePanel("APR"),
+  tabsetPanel(
+    tabPanel (title = "Tab 1",
+              
   sidebarLayout(
     
     sidebarPanel(
@@ -28,6 +30,9 @@ fluidPage(
       plotOutput("aprDensity")
     )
   )
+),
+
+tabPanel(title = "Tab 2")
   
 )
-
+)
