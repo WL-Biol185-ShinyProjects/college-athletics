@@ -6,9 +6,9 @@ library(broom)
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
 
 scatter <- multiyr_ncaa %>%
-  ggplot(aes(x=sport_name, y=multiyr_apr_rate_1000_official)) +
+  ggplot(aes(x=multiyr_pub_award, y=multiyr_apr_rate_1000_official)) +
   geom_point() +
-  geom_abline()
+  geom_smooth(method="lm", se = FALSE) 
 
 #exogenous variables: sport_name, scl_name, scl_div_18, conf_name18, scl_hbcu, scl_private, pub_award?
 
