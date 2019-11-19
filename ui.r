@@ -3,8 +3,6 @@ library(shiny)
 
 
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
-ncaa_by_year <- read.csv ("ncaa_by_year.csv")
-
 
 
 

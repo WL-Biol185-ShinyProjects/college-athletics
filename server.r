@@ -2,7 +2,6 @@ library(shiny)
 library(ggplot2)
 library(tidyverse)
 function(input, output){
-  
   output$aprDensity <- renderPlot({
     multiyr_ncaa %>%
       filter(scl_name %in% input$aprIncludeSchools) %>%
