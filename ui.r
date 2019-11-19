@@ -1,10 +1,18 @@
 library(shiny)
 
+
+
+multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
+ncaa_by_year <- read.csv ("ncaa_by_year.csv")
+
+
+
+
 fluidPage(
   
   title= "APR Made Interactive",
   tabsetPanel(
-    tabPanel (title = "Tab 1",
+    tabPanel (title = "Density Distribution",
               
   sidebarLayout(
     
@@ -32,7 +40,7 @@ fluidPage(
   )
 ),
 
-tabPanel(title = "Tab 2")
+tabPanel(title = "Trends of APR")
   
 )
 )
