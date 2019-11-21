@@ -4,9 +4,6 @@ library(shiny)
 
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
 
-
-
-
 fluidPage(
   
   title= "APR Made Interactive",
