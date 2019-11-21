@@ -28,3 +28,10 @@ function(input, output) {
       geom_smooth(method="lm", se = FALSE)
   })
 }
+
+
+multiyr_ncaa %>%
+  group_by(sport_name) %>%
+  ggplot(aes(x=sport_name, y=multiyr_apr_rate_1000_official)) +
+  geom_boxplot()
+
