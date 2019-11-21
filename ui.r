@@ -39,7 +39,24 @@ fluidPage(
   )
 ),
 
-tabPanel(title = "Trends of APR")
+tabPanel(title = "Box Plots Showing APR",
+         
+         sidebarLayout(
+           sidebarPanel(
+             selectInput(
+               inputId = "aprGroupBy",
+               label = "Group by",
+               choices = list(Sport = "sport_name",
+                              Conference = "confname_18",
+                              School = "scl_name"
+                              ),
+               selected = "sport_name",
+               uiOutput('plotFilter')
+             ),
+           mainPanel(
+             plotOutput("aprBoxPlot"))
+           )
+         ))
   
 )
 )
