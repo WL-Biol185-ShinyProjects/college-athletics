@@ -24,5 +24,11 @@ function(input, output){
     }
   })
   
+  output$aprBoxPlot <- renderPlot({
+    multiyr_ncaa %>%
+      ggplot(aes_string(x=input$aprGroupBy, y="multiyr_apr_rate_1000_official")) +
+      geom_boxplot()
+  })
+  
 }
 
