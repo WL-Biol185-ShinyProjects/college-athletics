@@ -64,6 +64,12 @@ multiyr_ncaa <- multiyr_ncaa %>%
 multiyr_ncaa <- multiyr_ncaa %>%
   select(-pub_award, -year_pub_award)
 
+#import data set with universities by state
+ncaa_uni_state <- read_csv("ncaa_uni_state.csv")
+
+state_mulityr_ncaa <- inner_join(multiyr_ncaa, ncaa_uni_state, by= "scl_name")
+
+
 #create table of data by year 
 ncaa_by_year <- ncaa_data_tidy %>%
   select(-multiyr_apr_rate_1000_official, -multiyr_elig_rate, -multiyr_pub_award, -multiyr_ret_rate, -multiyr_squad_size)

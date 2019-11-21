@@ -3,12 +3,6 @@ library(shiny)
 
 
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
-<<<<<<< HEAD
-=======
-
->>>>>>> e37fb100821c33106571d38ea4265deedc47fa48
-
-
 
 fluidPage(
   
