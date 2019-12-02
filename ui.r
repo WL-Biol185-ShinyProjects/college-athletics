@@ -46,15 +46,20 @@ tabPanel(title = "Box Plots Showing APR",
                choices = list(Sport = "sport_name",
                               Conference = "confname_18",
                               School = "scl_name"
-                              ),
+                              )),
                selected = "sport_name",
                uiOutput('plotFilter')
              ),
            mainPanel(
              plotOutput("aprBoxPlot"))
            )
+<<<<<<< HEAD
          ))
 
+=======
+         )
+  
+>>>>>>> 533ae7bd358527b7cf9c5f7072d85c124f9dbd73
 )
 )
 
