@@ -14,12 +14,12 @@ function(input, output){
   })
   
   output$plotFilter <- renderUI({
-    if(input$aprGroupBy == "sport_name") {
-      selectInput("sport_name", "Sport:", choices = unique(multiyr_ncaa$sport_name))
-    } else if(input$aprGroupBy == "confname_18") {
-      selectInput("conf_name", "Conference:", choices = unique(multiyr_ncaa$confname_18))
+    if(input$aprGroupBy == 'sport_name') {
+      selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name))
+    } else if(input$aprGroupBy == 'confname_18') {
+      selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18))
     } else {
-      selectInput("scl_name", "School:", choices = unique(multiyr_ncaa$scl_name))
+      selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name))
     }
   })
   
