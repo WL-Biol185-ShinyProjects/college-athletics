@@ -5,13 +5,13 @@ library(shiny)
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
 
 fluidPage(
-  
+
   title= "APR Made Interactive",
   tabsetPanel(
     tabPanel (title = "Density Distribution",
-              
+
   sidebarLayout(
-    
+
     sidebarPanel(
       selectInput(
         inputId = "aprGroupBy",
@@ -20,7 +20,7 @@ fluidPage(
                        School= "scl_name"
         ),
         selected = "confname_18",
-        
+
       ),
       selectizeInput(
         inputId = "aprIncludeSchools",
@@ -37,7 +37,7 @@ fluidPage(
 ),
 
 tabPanel(title = "Box Plots Showing APR",
-         
+
          sidebarLayout(
            sidebarPanel(
              selectInput(
@@ -54,6 +54,10 @@ tabPanel(title = "Box Plots Showing APR",
              plotOutput("aprBoxPlot"))
            )
          ))
-  
+
 )
 )
+
+
+
+
