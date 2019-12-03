@@ -130,13 +130,13 @@ dashboardPage(
                   sidebarLayout(
                     sidebarPanel(
                       selectInput(
-                        inputId = "aprGroupBy",
+                        inputId = "aprGroup",
                         label = "Group by",
                         choices = list(Sport = "sport_name",
                                        Conference = "confname_18",
                                        School = "scl_name"
-                        )),
-                      selected = "sport_name",
+                        ),
+                      selected = "sport_name"),
                       uiOutput('plotFilter')
                     ),
                     mainPanel(
