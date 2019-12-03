@@ -81,6 +81,7 @@ dashboardPage(
       tabItem(tabName = "density",
               fluidRow(
                 box(
+                  width= 12,
                   title = "Density",
                   sidebarLayout(
                     
@@ -114,7 +115,7 @@ dashboardPage(
               fluidRow(
                 box(
                   title = "Box Plots Showing APR",
-                  
+                  width= 12,
                   sidebarLayout(
                     sidebarPanel(
                       selectInput(
