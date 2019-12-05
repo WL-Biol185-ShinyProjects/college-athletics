@@ -25,15 +25,16 @@ function(input, output){
   
   output$aprBoxPlot <- renderPlot({
     multiyr_ncaa %>%
-      filter(
+      filter( 
+        input$aprGroup %in%
         if(input$aprGroup == 'sport_name') {
-          selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name))
+          unique(multiyr_ncaa$sport_name)
         } else if(input$aprGroup == 'confname_18') {
-          selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18))
+          unique(multiyr_ncaa$confname_18)
         } else {
-          selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name))
-        }
-        
+          unique(multiyr_ncaa$scl_name)
+        } 
+
       ) %>%
       ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
       geom_boxplot()
