@@ -4,7 +4,7 @@
 
 library(shiny)
 library(shinydashboard)
-state_multiyr_ncaa <- read.csv ("state_multiyr_ncaa.csv")
+multiyr_ncaa <- read.csv ("state_multiyr_ncaa.csv")
 
 dashboardPage(
   dashboardHeader(title="APR Dashboard"),
