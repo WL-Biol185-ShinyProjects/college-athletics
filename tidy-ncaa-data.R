@@ -93,7 +93,9 @@ ncaa_by_year$gender <- NA
 ncaa_by_year[ncaa_by_year$sport_code <=17, "gender"] <- "Male"
 ncaa_by_year[ncaa_by_year$sport_code  >=18 & ncaa_by_year$sport_code < 37, "gender"] <- "Female"
 ncaa_by_year[ncaa_by_year$sport_code ==37, "gender"] <- "Mixed"
+#may need to execute this sort of code for the state_multiyr_ncaa
 
 write.csv(multiyr_ncaa, "multiyr_ncaa.csv")
 write.csv(ncaa_by_year, "ncaa_by_year.csv")
+write.csv(state_mulityr_ncaa, "state_multiyr_ncaa.csv")
 
