@@ -2,7 +2,7 @@ library(shiny)
 library(ggplot2)
 library(tidyverse)
 
-multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
+state_multiyr_ncaa <- read.csv ("state_multiyr_ncaa.csv")
 
 function(input, output){
   output$aprDensity <- renderPlot({
