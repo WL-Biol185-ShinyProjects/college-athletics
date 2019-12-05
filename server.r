@@ -32,7 +32,7 @@ function(input, output){
         } else if(input$aprGroup == 'confname_18') {
           unique(multiyr_ncaa$confname_18)
         } else {
-          unique(multiyr_ncaa$scl_name)
+          unque(multiyr_ncaa$scl_name)
         } 
 
       ) %>%
