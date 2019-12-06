@@ -66,9 +66,11 @@ multiyr_ncaa <- multiyr_ncaa %>%
 
 #import data set with universities by state
 ncaa_uni_state <- read_csv("ncaa_uni_state.csv")
+#merge with NCAA dataset
+state_multiyr_ncaa <- inner_join(multiyr_ncaa, ncaa_uni_state, by= "scl_name")
 
-state_mulityr_ncaa <- inner_join(multiyr_ncaa, ncaa_uni_state, by= "scl_name")
-
+#import data set with state names and abbreviations
+state_names<- read_csv("states.csv")
 
 #create table of data by year 
 ncaa_by_year <- ncaa_data_tidy %>%
@@ -97,5 +99,5 @@ ncaa_by_year[ncaa_by_year$sport_code ==37, "gender"] <- "Mixed"
 
 write.csv(multiyr_ncaa, "multiyr_ncaa.csv")
 write.csv(ncaa_by_year, "ncaa_by_year.csv")
-write.csv(state_mulityr_ncaa, "state_multiyr_ncaa.csv")
-
+write.csv(state_multiyr_ncaa, "state_multiyr_ncaa.csv")
+write.csv(state_names, "states.csv")
