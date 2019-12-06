@@ -1,7 +1,7 @@
 library(tidyverse)
 library(leaflet)
 library(rgdal)
-
+state_names<- read_csv("states.csv")
 statesGEO  <- rgdal::readOGR("states.geo.json")
 #merge data frame into states
 statesGEO@data <- statesGEO@data %>%
