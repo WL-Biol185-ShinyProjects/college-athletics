@@ -12,8 +12,7 @@ function(input, output){
       geom_density(alpha=0.2) +
       xlab("Academic Performance Rate") +
       labs(fill = "Name:") +
-      theme(legend.background = element_rect(fill="lightgrey", 
-                                             size=0.5, linetype="solid"))
+      theme_gray()
     
   })
   
@@ -33,23 +32,26 @@ function(input, output){
       multiyr_ncaa %>%
         filter(input$aprGroup %in% unique(sport_name)) %>%
         ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-        geom_boxplot() +
+        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("Sport") +
-        ylab("Academic Performance Rate")
+        ylab("Academic Performance Rate") +
+        theme_gray()
     }else if(input$aprGroup == 'confname_18') {
       multiyr_ncaa %>%
         filter('confname_18' %in% input$aprGroup) %>%
         ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-        geom_boxplot() +
+        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("Conference") +
-        ylab("Academic Performance Rate")
+        ylab("Academic Performance Rate") +
+        theme_gray() 
     }else {
       multiyr_ncaa %>%
         filter('scl_name' %in% input$aprGroup) %>%
         ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-        geom_boxplot() +
+        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("School") +
-        ylab("Academic Performance Rate")
+        ylab("Academic Performance Rate") +
+        theme_gray() 
     }
   }
   
