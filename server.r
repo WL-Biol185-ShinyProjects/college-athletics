@@ -33,17 +33,23 @@ function(input, output){
       multiyr_ncaa %>%
         filter(input$aprGroup %in% unique(sport_name)) %>%
         ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-        geom_boxplot() 
-    # }else if(input$aprGroup == 'confname_18') {
-    #   multiyr_ncaa %>%
-    #     filter('confname_18' %in% input$aprGroup) %>%
-    #     ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-    #     geom_boxplot()
-    # }else {
-    #   multiyr_ncaa %>%
-    #     filter('scl_name' %in% input$aprGroup) %>%
-        # ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
-        # geom_boxplot()
+        geom_boxplot() +
+        xlab("Sport") +
+        ylab("Academic Performance Rate")
+    }else if(input$aprGroup == 'confname_18') {
+      multiyr_ncaa %>%
+        filter('confname_18' %in% input$aprGroup) %>%
+        ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
+        geom_boxplot() +
+        xlab("Conference") +
+        ylab("Academic Performance Rate")
+    }else {
+      multiyr_ncaa %>%
+        filter('scl_name' %in% input$aprGroup) %>%
+        ggplot(aes_string(x=input$aprGroup, y="multiyr_apr_rate_1000_official")) +
+        geom_boxplot() +
+        xlab("School") +
+        ylab("Academic Performance Rate")
     }
   }
   
