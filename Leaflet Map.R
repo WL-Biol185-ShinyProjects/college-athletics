@@ -9,6 +9,9 @@ statesGEO@data <- statesGEO@data %>%
   left_join(state_names, by = c("NAME" = "State")) %>%
   left_join(leafletdf, by = c("Abbreviation" = "state"))
 
+#usaStates <- usaStates %>%
+  #select(GEO_ID, STATE, NAME, LSAD, CENSUSAREA)
+
 pal <- colorNumeric("YlOrRd", NULL)
 map<-
 leaflet(data= statesGEO) %>%
