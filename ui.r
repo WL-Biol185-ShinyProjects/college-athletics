@@ -1,4 +1,4 @@
-
+library(leaflet)
 library(shiny)
 library(shinydashboard)
 multiyr_ncaa <- read.csv("multiyr_ncaa.csv")
@@ -87,7 +87,8 @@ dashboardPage(skin="black",
       ),
      tabItem(tabName= "leaflet",
              fluidRow(
-               p("View how APR is distributed regionally:")
+               p("View how APR is distributed regionally:"),
+               leafletOutput("aprMap")
              )
              )
     )
