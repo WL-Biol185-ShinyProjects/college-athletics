@@ -36,7 +36,7 @@ function(input, output){
     if(input$aprGroup == 'sport_name') {
       multiyr_ncaa %>%
         filter('sport_name' %in% input$sport_name) %>%
-        ggplot(aes_string(x='sport_name', y="multiyr_apr_rate_1000_official")) +
+        ggplot(aes(x='sport_name', y='multiyr_apr_rate_1000_official')) +
         geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("Sport") +
         ylab("Academic Performance Rate") +
@@ -44,7 +44,7 @@ function(input, output){
     }else if(input$aprGroup == 'confname_18') {
       multiyr_ncaa %>%
         filter('confname_18' %in% input$confname_18) %>%
-        ggplot(aes_string(x='confname_18', y="multiyr_apr_rate_1000_official")) +
+        ggplot(aes_string(x='confname_18', y='multiyr_apr_rate_1000_official')) +
         geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("Conference") +
         ylab("Academic Performance Rate") +
@@ -52,13 +52,13 @@ function(input, output){
     }else {
       multiyr_ncaa %>%
         filter('scl_name' %in% input$scl_name) %>%
-        ggplot(aes_string(x='scl_name', y="multiyr_apr_rate_1000_official")) +
+        ggplot(aes_string(x='scl_name', y='multiyr_apr_rate_1000_official')) +
         geom_boxplot(color="black", fill="light blue", alpha=0.2) +
         xlab("School") +
         ylab("Academic Performance Rate") +
         theme_gray() 
     }
-  }
+  })
 
   #output$aprMap <- renderLeaflet({
     #merge data frame into states
@@ -96,7 +96,7 @@ function(input, output){
   #}
   #)
   
-  )
+  
   
 }
 
