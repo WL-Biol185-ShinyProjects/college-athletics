@@ -23,11 +23,11 @@ function(input, output){
   
   output$plotFilter <- renderUI({
     if(input$aprGroup == 'sport_name') {
-      selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name), selected=unique(multiyr_ncaa$sport_name[1]))
+      selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name), multiple = TRUE, selected=unique(multiyr_ncaa$sport_name[1]))
     } else if(input$aprGroup == 'confname_18') {
-      selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18), selected=unique(multiyr_ncaa$confname_18[1]))
+      selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18), multiple = TRUE, selected=unique(multiyr_ncaa$confname_18[1]))
     } else {
-      selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name), selected=unique(multiyr_ncaa$scl_name[1]))
+      selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name), multiple = TRUE, selected=unique(multiyr_ncaa$scl_name[1]))
     }
   })
   
@@ -36,26 +36,29 @@ function(input, output){
     if(input$aprGroup == 'sport_name') {
       multiyr_ncaa %>%
         filter(sport_name %in% input$sport_name) %>%
-        ggplot(aes(x=sport_name, y=multiyr_apr_rate_1000_official)) +
-        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
+        ggplot(aes(x=sport_name, y=multiyr_apr_rate_1000_official, fill=sport_name)) +
+        geom_boxplot() +
         xlab("Sport") +
         ylab("Academic Performance Rate") +
+        labs(fill='Sport:') +
         theme_gray()
     }else if(input$aprGroup == 'confname_18') {
       multiyr_ncaa %>%
         filter(confname_18 %in% input$confname_18) %>%
-        ggplot(aes(x=confname_18, y=multiyr_apr_rate_1000_official)) +
-        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
+        ggplot(aes(x=confname_18, y=multiyr_apr_rate_1000_official, fill=confname_18)) +
+        geom_boxplot() +
         xlab("Conference") +
         ylab("Academic Performance Rate") +
+        labs(fill='Conference:') +
         theme_gray() 
     }else {
       multiyr_ncaa %>%
         filter(scl_name %in% input$scl_name) %>%
-        ggplot(aes(x=scl_name, y=multiyr_apr_rate_1000_official)) +
-        geom_boxplot(color="black", fill="light blue", alpha=0.2) +
+        ggplot(aes(x=scl_name, y=multiyr_apr_rate_1000_official, fill=scl_name)) +
+        geom_boxplot() +
         xlab("School") +
         ylab("Academic Performance Rate") +
+        labs(fill='scl_name') +
         theme_gray() 
     }
   })
