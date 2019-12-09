@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(readr)
+library(dplyr)
 
 #import data
 ncaa_data <- read_csv("data/ncaa_data.csv")
@@ -68,6 +69,10 @@ multiyr_ncaa <- multiyr_ncaa %>%
 ncaa_uni_state <- read_csv("ncaa_uni_state.csv")
 #merge with NCAA dataset
 state_multiyr_ncaa <- inner_join(multiyr_ncaa, ncaa_uni_state, by= "scl_name")
+#create an average APR by state column
+state_multiyr_ncaa<- state_multiyr_ncaa %>%
+  group_by(state)%>%
+  mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
 
 #import data set with state names and abbreviations
 state_names<- read_csv("states.csv")

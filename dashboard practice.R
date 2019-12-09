@@ -1,8 +1,12 @@
 library(shiny)
 library(shinydashboard)
 multiyr_ncaa <- read.csv ("multiyr_ncaa.csv")
-dashboardPage(
-  dashboardHeader(title="APR Dashboard"),
+
+
+dashboardPage(skin= "black",
+  dashboardHeader(title=span("APR Dashboard",
+                             style= "font-weight: bold"),
+  ),
   dashboardSidebar(
     sidebarMenu(
       menuItem("density", tabName = "density"),
