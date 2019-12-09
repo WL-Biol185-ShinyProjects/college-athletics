@@ -75,6 +75,8 @@ state_multiyr_ncaa<- state_multiyr_ncaa %>%
   group_by(state)%>%
   mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
 
+leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=unique(state_multiyr_ncaa$stateAvg))
+
 #import data set with state names and abbreviations
 state_names<- read_csv("states.csv")
 
@@ -107,3 +109,4 @@ write.csv(multiyr_ncaa, "multiyr_ncaa.csv")
 write.csv(ncaa_by_year, "ncaa_by_year.csv")
 write.csv(state_multiyr_ncaa, "state_multiyr_ncaa.csv")
 write.csv(state_names, "states.csv")
+write.csv(leafletdf, "leafletdf.csv")

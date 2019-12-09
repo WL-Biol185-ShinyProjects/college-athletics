@@ -1,14 +1,13 @@
 library(tidyverse)
 library(leaflet)
 library(rgdal)
+leafletdf <- read_csv("leafletdf.csv")
 state_names<- read_csv("states.csv")
 statesGEO  <- rgdal::readOGR("states.geo.json")
 #merge data frame into states
 statesGEO@data <- statesGEO@data %>%
   left_join(state_names, by = c("NAME" = "State")) %>%
-  left_join(state_multiyr_ncaa, by = c("Abbreviation" = "state"))
-
-state_multiyr_ncaa<- read_csv("state_multiyr_ncaa.csv")
+  left_join(leafletdf, by = c("Abbreviation" = "state"))
 
 pal <- colorNumeric("YlOrRd", NULL)
 map<-
@@ -22,15 +21,15 @@ addTiles() %>%
               dashArray        = "3",
               weight           = 2,
               color            = "white",
-              fillColor        = ~pal(state_mulityr_ncaa$multiyr_apr_rate_1000_official),
-              label            = ~paste0(NAME, ": ", formatC(state_mulityr_ncaa$multiyr_apr_rate_1000_official)),
+              fillColor        = ~pal(leafletdf$stateAvg),
+              label            = ~paste0(NAME, ": ", formatC(leafletdf$stateAvg)),
               highlightOptions = highlightOptions(color = "white",
                                                   fillOpacity = 2,
                                                   bringToFront = TRUE
                                                   )) %>%
   addLegend("bottomright",
             pal          = pal, 
-            values       = ~(state_mulityr_ncaa$multiyr_apr_rate_1000_official), 
+            values       = ~(leafletdf$stateAvg), 
             opacity      = 0.8, 
             title        = "Does this work",
             labFormat    = labelFormat(suffix = "%"))
