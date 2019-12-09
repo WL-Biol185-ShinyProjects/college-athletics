@@ -65,6 +65,15 @@ multiyr_ncaa <- multiyr_ncaa %>%
 multiyr_ncaa <- multiyr_ncaa %>%
   select(-pub_award, -year_pub_award)
 
+#changing scl_hbcu and acl_private columns to factors from integers
+multiyr_ncaa$scl_hbcu <- factor(multiyr_ncaa$scl_hbcu,
+                                levels = c(0, 1),
+                                labels = c("Not HBCU", "HBCU"))
+multiyr_ncaa$scl_private <- factor(multiyr_ncaa$scl_private,
+                                   levels = c(0, 1),
+                                   labels = c("Public", "Private"))
+
+
 #import data set with universities by state
 ncaa_uni_state <- read_csv("ncaa_uni_state.csv")
 #merge with NCAA dataset
