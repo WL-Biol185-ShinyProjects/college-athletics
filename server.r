@@ -3,6 +3,7 @@ library(ggplot2)
 library(tidyverse)
 library(rgdal)
 library(leaflet)
+library(shinydashboard)
 
 multiyr_ncaa <- read.csv("multiyr_ncaa.csv")
 leafletdf <- read_csv("leafletdf.csv")
@@ -20,6 +21,12 @@ function(input, output){
       theme_gray()
     
   })
+  
+  #output$retentionDensity <- renderPlot({
+    #multiyr_ncaa %>%
+     # filter(scl_name %in% input$densityIncludeSchools) %>%
+      #ggplot (aes_string(""))
+ # })
   
   output$plotFilter <- renderUI({
     if(input$aprGroup == 'sport_name') {

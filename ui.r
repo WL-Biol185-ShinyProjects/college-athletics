@@ -1,6 +1,10 @@
 library(leaflet)
 library(shiny)
 library(shinydashboard)
+library(ggplot2)
+library(tidyverse)
+library(rgdal)
+
 multiyr_ncaa <- read.csv("multiyr_ncaa.csv")
 
 dashboardPage(skin="black",
