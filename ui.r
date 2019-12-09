@@ -14,7 +14,7 @@ dashboardPage(skin="black",
     )
   ),
   
-  dashboardBody(skin= "blue",
+  dashboardBody(
     tabItems(
       tabItem(tabName = "intro",
               fluidRow(
