@@ -31,27 +31,22 @@ dashboardPage(skin="black",
                 p("This is a density plot which shows the distribution of Academic Performance Rates (APR). Choose to group by either school or conference and find out the density of the APR of that particular variable:"),
                 box(
                   width= 12,
-                  title = "Density",
+                  title = "Density Plots Showing APR",
                   sidebarLayout(
                     
                     sidebarPanel(
                       selectInput(
                         inputId = "aprGroupBy",
                         label = "Group by",
-                        choices = list(Conference= "confname_18",
+                        choices = list(Sport = "sport_name",
+                                       Conference= "confname_18",
                                        School= "scl_name"
                         ),
-                        selected = "confname_18",
+                        selected = "sport_name"
                         
                       ),
-                      selectizeInput(
-                        inputId = "aprIncludeSchools",
-                        label = "Schools",
-                        choices = unique(multiyr_ncaa$scl_name),
-                        multiple=TRUE,
-                        selected=unique(multiyr_ncaa$scl_name[1]),
-                      )
-                    ),
+                      uiOutput('plotFilterDens')),
+                    
                     mainPanel(
                       plotOutput("aprDensity")
                     )
@@ -62,7 +57,7 @@ dashboardPage(skin="black",
       #second tab
       tabItem(tabName = "boxplots",
               fluidRow(
-                p("Choose a sport, conference, or school you are interested in looking at to see a box plot of the Academic Progress Rate (APR). This plot allows you to see the distribution of..."),
+                p("Choose a category you are interested in looking at to see a box plot of the Academic Progress Rate (APR). This plot allows you to see the distribution of..."),
                 box(
                   title = "Box Plots Showing APR",
                   width= 12,
@@ -73,10 +68,12 @@ dashboardPage(skin="black",
                         label = "Group by",
                         choices = list(Sport = "sport_name",
                                        Conference = "confname_18",
-                                       School = "scl_name"
+                                       School = "scl_name",
+                                       HBCU = "scl_hbcu",
+                                       Private = "scl_private"
                         ),
                       selected = "sport_name"),
-                      uiOutput('plotFilter')
+                      uiOutput('plotFilterBox')
                     ),
                     mainPanel(
                       plotOutput("aprBoxPlot"))
