@@ -90,6 +90,14 @@ state_multiyr_ncaa <- state_multiyr_ncaa %>%
   rename(conference = confname_18) %>%
   rename(sport = sport_name)
 
+#changing scl_hbcu and acl_private columns to factors from integers
+state_multiyr_ncaa$scl_hbcu <- factor(state_multiyr_ncaa$scl_hbcu,
+                                levels = c(0, 1),
+                                labels = c("Not HBCU", "HBCU"))
+state_multiyr_ncaa$scl_private <- factor(state_multiyr_ncaa$scl_private,
+                                   levels = c(0, 1),
+                                   labels = c("Public", "Private"))
+
 leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=unique(state_multiyr_ncaa$stateAvg))
 
 #import data set with state names and abbreviations
