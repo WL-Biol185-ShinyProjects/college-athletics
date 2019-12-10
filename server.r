@@ -4,6 +4,8 @@ library(tidyverse)
 library(rgdal)
 library(leaflet)
 library(shinydashboard)
+library(png)
+library(htmltools)
 
 multiyr_ncaa <- read.csv("multiyr_ncaa.csv")
 leafletdf <- read_csv("leafletdf.csv")
