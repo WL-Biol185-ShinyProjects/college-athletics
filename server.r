@@ -50,7 +50,45 @@ function(input, output){
         theme_gray() 
     }
   })
-
+  
+  output$plotRetentionFilter <- renderUI({
+    if(input$retGroupBy == 'sport_name') {
+      selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name), multiple = TRUE, selected=unique(multiyr_ncaa$sport_name[1]))
+    } else if(input$retGroupBy == 'confname_18') {
+      selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18), multiple = TRUE, selected=unique(multiyr_ncaa$confname_18[1]))
+    } else if(input$retGroupBy == 'scl_name'){
+      selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name), multiple = TRUE, selected=unique(multiyr_ncaa$scl_name[1]))
+    } 
+  })
+  
+  output$retDensity <- renderPlot({
+    
+    if(input$retGroupBy == 'sport_name') {
+      multiyr_ncaa %>%
+        filter(sport_name %in% input$sport_name) %>%
+        ggplot(aes(x=multiyr_ret_rate, fill=sport_name)) +
+        geom_density(alpha=0.2) +
+        xlab("Retention Rate") +
+        labs(fill='Sport:') +
+        theme_gray()
+    }else if(input$retGroupBy == 'confname_18') {
+      multiyr_ncaa %>%
+        filter(confname_18 %in% input$confname_18) %>%
+        ggplot(aes(x=multiyr_ret_rate, fill=confname_18)) +
+        geom_density(alpha=0.2) +
+        xlab("Retention Rate") +
+        labs(fill='Conference:') +
+        theme_gray() 
+    }else if(input$aprGroupBy == 'scl_name'){
+      multiyr_ncaa %>%
+        filter(scl_name %in% input$scl_name) %>%
+        ggplot(aes(x=multiyr_ret_rate, fill=scl_name)) +
+        geom_density(alpha=0.2) +
+        xlab("Retention Rate") +
+        labs(fill='School:') +
+        theme_gray() 
+    }
+  })
   
   output$plotFilterBox <- renderUI({
     if(input$aprGroup == 'sport_name') {
@@ -115,13 +153,13 @@ function(input, output){
         theme_gray() 
     }
   })
-
+  
   output$aprMap <- renderLeaflet({
     #merge data frame into states
     statesGEO@data <- statesGEO@data %>%
       left_join(state_names, by = c("NAME" = "State")) %>%
       left_join(leafletdf, by = c("Abbreviation" = "state"))
-
+    
     
     pal <- colorNumeric("YlOrRd", NULL)
     map<-
@@ -153,5 +191,3 @@ function(input, output){
   
   
 }
-
-
