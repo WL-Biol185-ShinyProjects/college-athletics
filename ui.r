@@ -34,7 +34,7 @@ dashboardPage(skin="black",
                           fluidRow(
                             p("This is a density plot which shows the distribution of Academic Performance Rates (APR). Choose to group by either school or conference and find out the density of the APR of that particular variable:"),
                             box(
-                              width= 6,
+                              width= 12,
                               title = "Density Plot Showing APR",
                               sidebarLayout(
                                 
@@ -52,35 +52,36 @@ dashboardPage(skin="black",
                                   uiOutput('plotFilterDens')),
                                 
                                 mainPanel(
-                                  plotOutput("aprDensity")
-                                )
-                              )
-                            ),
-                            box(
-                              width= 6,
-                              title = "Density Plot Showing Retention Rate",
-                              sidebarLayout(
-                                
-                                sidebarPanel(
-                                  selectInput(
-                                    inputId = "retGroupBy",
-                                    label = "Group by",
-                                    choices = list(Sport = "sport_name",
-                                                   Conference= "confname_18",
-                                                   School= "scl_name"
-                                    ),
-                                    selected = "sport_name"
-                                    
-                                  ),
-                                  uiOutput('plotRetentionFilter')),
-                                
-                                mainPanel(
+                                  plotOutput("aprDensity"),
                                   plotOutput("retDensity")
                                 )
                               )
-                            )
-                          )
-                  ),
+                            ))),
+                            # box(
+                            #   width= 6,
+                            #   title = "Density Plot Showing Retention Rate",
+                            #   sidebarLayout(
+                                
+                                # sidebarPanel(
+                                #   selectInput(
+                                #     inputId = "aprGroupBy", 
+                                #     label = "Group by",
+                                #     choices = list(Sport = "sport_name",
+                                #                    Conference= "confname_18",
+                                #                    School= "scl_name"
+                                #     ),
+                                #     selected = "sport_name"
+                                #     
+                                #   ),
+                                #   uiOutput('plotFilterDens')), 
+                                
+                  #               mainPanel(
+                  #                 plotOutput("retDensity")
+                  #               )
+                  #             )
+                  #           )
+                  #         )
+                  # ),
       
                   #second tab
                   tabItem(tabName = "boxplots",
