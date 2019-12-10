@@ -29,7 +29,7 @@ dashboardPage(skin="black",
                             p("APR is an important measurement to consider for any prospective student athletes who are looking to play for not only a specific school but also a specific team. According to the NCAA, less than 2 percent of NCAA student-athletes become professional athletes. Because of this, student-athletes may wish to emphasize academic performance to prepare them for life after college. "),
                             p("The creators of this application wish to give any prospective student athlete an inside view of the academic performance of a specific school, team, and conference as well as the factors which may contribute to the APR. With this knowledge, one should be able to gain a greater perspective of their lives as student athletes off the field and inside the classroom. This application consists of a density plot and multiple box plots regarding APR and multiple variables as well as a heat map demonstrating the regional differences in APR."),
                             img(src="logo.png", align = "center",height='100px',width='400px')
-                          )
+                            )
                   ),
                   #first tab
                   tabItem(tabName = "density",
