@@ -95,22 +95,22 @@ function(input, output){
   
   output$plotFilterBox <- renderUI({
     if(input$aprGroup == 'sport_name') {
-      selectInput('sport_name', "Sport:", choices = unique(state_multiyr_ncaa$sport_name), multiple = TRUE, selected=unique(state_multiyr_ncaa$sport_name[1]))
+      selectInput('sport_name', "Sport:", choices = unique(multiyr_ncaa$sport_name), multiple = TRUE, selected=unique(multiyr_ncaa$sport_name[1]))
     } else if(input$aprGroup == 'confname_18') {
-      selectInput('confname_18', "Conference:", choices = unique(state_multiyr_ncaa$confname_18), multiple = TRUE, selected=unique(state_multiyr_ncaa$confname_18[1]))
+      selectInput('confname_18', "Conference:", choices = unique(multiyr_ncaa$confname_18), multiple = TRUE, selected=unique(multiyr_ncaa$confname_18[1]))
     } else if(input$aprGroup == 'scl_name'){
-      selectInput('scl_name', "School:", choices = unique(state_multiyr_ncaa$scl_name), multiple = TRUE, selected=unique(state_multiyr_ncaa$scl_name[1]))
+      selectInput('scl_name', "School:", choices = unique(multiyr_ncaa$scl_name), multiple = TRUE, selected=unique(multiyr_ncaa$scl_name[1]))
     } else if(input$aprGroup == 'scl_hbcu'){
-      selectInput('scl_hbcu', "HBCU:", choices = unique(state_multiyr_ncaa$scl_hbcu), multiple = TRUE, selected=unique(state_multiyr_ncaa$scl_hbcu[1]))
+      selectInput('scl_hbcu', "HBCU:", choices = unique(multiyr_ncaa$scl_hbcu), multiple = TRUE, selected=unique(multiyr_ncaa$scl_hbcu[1]))
     } else if(input$aprGroup == 'scl_private'){
-      selectInput('scl_private', "Private:", choices = unique(state_multiyr_ncaa$scl_private), multiple = TRUE, selected=unique(state_multiyr_ncaa$scl_private[1]))
+      selectInput('scl_private', "Private:", choices = unique(multiyr_ncaa$scl_private), multiple = TRUE, selected=unique(multiyr_ncaa$scl_private[1]))
     }
   })
   
   output$aprBoxPlot <- renderPlot({
     
     if(input$aprGroup == 'sport_name') {
-      state_multiyr_ncaa %>%
+      multiyr_ncaa %>%
         filter(sport_name %in% input$sport_name) %>%
         ggplot(aes(x=sport_name, y=multiyr_apr_rate_1000_official, fill=sport_name)) +
         geom_boxplot() +
@@ -119,7 +119,7 @@ function(input, output){
         labs(fill='Sport:') +
         theme_gray()
     }else if(input$aprGroup == 'confname_18') {
-      state_multiyr_ncaa %>%
+      multiyr_ncaa %>%
         filter(confname_18 %in% input$confname_18) %>%
         ggplot(aes(x=confname_18, y=multiyr_apr_rate_1000_official, fill=confname_18)) +
         geom_boxplot() +
@@ -128,7 +128,7 @@ function(input, output){
         labs(fill='Conference:') +
         theme_gray() 
     }else if(input$aprGroup == 'scl_name'){
-      state_multiyr_ncaa %>%
+      multiyr_ncaa %>%
         filter(scl_name %in% input$scl_name) %>%
         ggplot(aes(x=scl_name, y=multiyr_apr_rate_1000_official, fill=scl_name)) +
         geom_boxplot() +
@@ -137,7 +137,7 @@ function(input, output){
         labs(fill='School:') +
         theme_gray() 
     }else if(input$aprGroup == 'scl_hbcu'){
-      state_multiyr_ncaa %>%
+      multiyr_ncaa %>%
         filter(scl_hbcu %in% input$scl_hbcu) %>%
         ggplot(aes(x=scl_hbcu, y=multiyr_apr_rate_1000_official, fill=scl_hbcu)) +
         geom_boxplot() +
@@ -146,7 +146,7 @@ function(input, output){
         labs(fill='HBCU:') +
         theme_gray() 
     }else if(input$aprGroup == 'scl_private'){
-      state_multiyr_ncaa %>%
+      multiyr_ncaa %>%
         filter(scl_private %in% input$scl_private) %>%
         ggplot(aes(x=scl_private, y=multiyr_apr_rate_1000_official, fill=scl_private)) +
         geom_boxplot() +
