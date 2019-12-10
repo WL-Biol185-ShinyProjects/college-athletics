@@ -98,13 +98,13 @@ dashboardPage(skin="black",
                                   selectInput(
                                     inputId = "aprGroup",
                                     label = "Group by",
-                                    choices = list(Sport = "sport_name",
-                                                   Conference = "confname_18",
-                                                   School = "scl_name",
+                                    choices = list(Sport = "sport",
+                                                   Conference = "conference",
+                                                   School = "school",
                                                    HBCU = "scl_hbcu",
                                                    Private = "scl_private"
                                     ),
-                                    selected = "sport_name"),
+                                    selected = "sport"),
                                   uiOutput('plotFilterBox')
                                 ),
                                 mainPanel(
