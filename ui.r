@@ -34,7 +34,7 @@ dashboardPage(skin="black",
                   #first tab
                   tabItem(tabName = "density",
                           fluidRow(
-                            p("This is a density plot which shows the distribution of Academic Performance Rates (APR). Choose to group by either school or conference and find out the density of the APR of that particular variable:"),
+                            p("This is a density plot which shows the distribution of Academic Performance Rate (APR) and retention rate. Choose to group by either sport, school, or conference and find out the density of the APR and retention rate of that particular variable:"),
                             box(
                               width= 12,
                               title = "Density Plot Showing APR",
@@ -88,7 +88,7 @@ dashboardPage(skin="black",
                   #second tab
                   tabItem(tabName = "boxplots",
                           fluidRow(
-                            p("Choose a category you are interested in looking at to see a box plot of the Academic Progress Rate (APR). This plot allows you to see the distribution of..."),
+                            p("Choose a variable you are interested in looking at to see a box plot of the Academic Progress Rate (APR):"),
                             box(
                               title = "Box Plots Showing APR",
                               width= 12,
