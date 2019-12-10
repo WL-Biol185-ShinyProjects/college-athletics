@@ -3,7 +3,7 @@
 library(tidyverse)
 library(readr)
 library(dplyr)
-
+library(plyr)
 #import data
 ncaa_data <- read_csv("data/ncaa_data.csv")
 
@@ -83,6 +83,7 @@ state_multiyr_ncaa<- state_multiyr_ncaa %>%
   drop_na(multiyr_apr_rate_1000_official)%>%
   group_by(state)%>%
   mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
+
 
 leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=unique(state_multiyr_ncaa$stateAvg))
 
