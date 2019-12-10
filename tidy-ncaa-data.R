@@ -84,6 +84,14 @@ state_multiyr_ncaa<- state_multiyr_ncaa %>%
   group_by(state)%>%
   mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
 
+<<<<<<< HEAD
+=======
+#renaming certain columns to be different than multiyr_ncaa column names
+state_multiyr_ncaa <- state_multiyr_ncaa %>% 
+  rename(school = scl_name) %>%
+  rename(conference = confname_18) %>%
+  rename(sport = sport_name)
+>>>>>>> c55a8ea047144f9234da67f02d03e04acc8ff1a3
 
 leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=unique(state_multiyr_ncaa$stateAvg))
 
