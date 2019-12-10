@@ -34,7 +34,7 @@ dashboardPage(skin="black",
                           fluidRow(
                             p("This is a density plot which shows the distribution of Academic Performance Rates (APR). Choose to group by either school or conference and find out the density of the APR of that particular variable:"),
                             box(
-                              width= 12,
+                              width= 6,
                               title = "Density Plot Showing APR",
                               sidebarLayout(
                                 
@@ -57,7 +57,7 @@ dashboardPage(skin="black",
                               )
                             ),
                             box(
-                              width= 12,
+                              width= 6,
                               title = "Density Plot Showing Retention Rate",
                               sidebarLayout(
                                 

@@ -79,7 +79,7 @@ function(input, output){
         xlab("Retention Rate") +
         labs(fill='Conference:') +
         theme_gray() 
-    }else if(input$aprGroupBy == 'scl_name'){
+    }else if(input$retGroupBy == 'scl_name'){
       multiyr_ncaa %>%
         filter(scl_name %in% input$scl_name) %>%
         ggplot(aes(x=multiyr_ret_rate, fill=scl_name)) +
@@ -183,7 +183,7 @@ function(input, output){
                 pal          = pal, 
                 values       = ~(leafletdf$stateAvg), 
                 opacity      = 0.8, 
-                title        = "Does this work",
+                title        = "Academic Performance Rate",
                 labFormat    = labelFormat(suffix = "%"))
   }
   )
