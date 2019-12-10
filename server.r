@@ -183,7 +183,7 @@ function(input, output){
                 pal          = pal, 
                 values       = ~(leafletdf$stateAvg), 
                 opacity      = 0.8, 
-                title        = "Academic Performance Rate",
+                title        = "Average APR",
                 labFormat    = labelFormat(suffix = "%"))
   }
   )
