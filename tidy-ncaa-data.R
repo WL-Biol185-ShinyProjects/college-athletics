@@ -3,7 +3,7 @@
 library(tidyverse)
 library(readr)
 library(dplyr)
-
+library(plyr)
 #import data
 ncaa_data <- read_csv("data/ncaa_data.csv")
 
@@ -84,11 +84,14 @@ state_multiyr_ncaa<- state_multiyr_ncaa %>%
   group_by(state)%>%
   mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
 
+<<<<<<< HEAD
+=======
 #renaming certain columns to be different than multiyr_ncaa column names
 state_multiyr_ncaa <- state_multiyr_ncaa %>% 
   rename(school = scl_name) %>%
   rename(conference = confname_18) %>%
   rename(sport = sport_name)
+>>>>>>> c55a8ea047144f9234da67f02d03e04acc8ff1a3
 
 #changing scl_hbcu and acl_private columns to factors from integers
 state_multiyr_ncaa$scl_hbcu <- factor(state_multiyr_ncaa$scl_hbcu,
