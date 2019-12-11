@@ -116,8 +116,11 @@ dashboardPage(skin="black",
                   ),
                   tabItem(tabName= "leaflet",
                           fluidRow(
+                            
                             p("View how APR is distributed regionally:"),
+                            box(width = 14,
                             leafletOutput("aprMap")
+                            )
                           )
                   )
                 )
