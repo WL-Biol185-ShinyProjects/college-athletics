@@ -82,24 +82,15 @@ state_multiyr_ncaa <- inner_join(multiyr_ncaa, ncaa_uni_state, by= "scl_name")
 state_multiyr_ncaa<- state_multiyr_ncaa %>%
   drop_na(multiyr_apr_rate_1000_official)%>%
   group_by(state)%>%
-  mutate(stateAvg = mean(multiyr_apr_rate_1000_official))
+  dplyr::mutate(stateAvg = mean(multiyr_apr_rate_1000_official)) #need to fix this function to summarize based on group
 
-<<<<<<< HEAD
-=======
+
 #renaming certain columns to be different than multiyr_ncaa column names
 state_multiyr_ncaa <- state_multiyr_ncaa %>% 
-  rename(school = scl_name) %>%
-  rename(conference = confname_18) %>%
-  rename(sport = sport_name)
->>>>>>> c55a8ea047144f9234da67f02d03e04acc8ff1a3
+  dplyr::rename(school = scl_name) %>%
+  dplyr::rename(conference = confname_18) %>%
+  dplyr::rename(sport = sport_name)
 
-#changing scl_hbcu and acl_private columns to factors from integers
-state_multiyr_ncaa$scl_hbcu <- factor(state_multiyr_ncaa$scl_hbcu,
-                                levels = c(0, 1),
-                                labels = c("Not HBCU", "HBCU"))
-state_multiyr_ncaa$scl_private <- factor(state_multiyr_ncaa$scl_private,
-                                   levels = c(0, 1),
-                                   labels = c("Public", "Private"))
 
 leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=unique(state_multiyr_ncaa$stateAvg))
 
@@ -107,8 +98,8 @@ leafletdf<- data.frame("state"= unique(state_multiyr_ncaa$state), "stateAvg"=uni
 state_names<- read_csv("states.csv")
 
 #create table of data by year 
-ncaa_by_year <- ncaa_data_tidy %>%
-  select(-multiyr_apr_rate_1000_official, -multiyr_elig_rate, -multiyr_pub_award, -multiyr_ret_rate, -multiyr_squad_size)
+# ncaa_by_year <- ncaa_data_tidy %>%
+#   select(-multiyr_apr_rate_1000_official, -multiyr_elig_rate, -multiyr_pub_award, -multiyr_ret_rate, -multiyr_squad_size)
 
 
 
@@ -125,14 +116,14 @@ multiyr_ncaa[multiyr_ncaa$sport_code <=17, "gender"] <- "Male"
 multiyr_ncaa[multiyr_ncaa$sport_code  >=18 & multiyr_ncaa$sport_code < 37, "gender"] <- "Female"
 multiyr_ncaa[multiyr_ncaa$sport_code ==37, "gender"] <- "Mixed"
 
-ncaa_by_year$gender <- NA
-ncaa_by_year[ncaa_by_year$sport_code <=17, "gender"] <- "Male"
-ncaa_by_year[ncaa_by_year$sport_code  >=18 & ncaa_by_year$sport_code < 37, "gender"] <- "Female"
-ncaa_by_year[ncaa_by_year$sport_code ==37, "gender"] <- "Mixed"
+# ncaa_by_year$gender <- NA
+# ncaa_by_year[ncaa_by_year$sport_code <=17, "gender"] <- "Male"
+# ncaa_by_year[ncaa_by_year$sport_code  >=18 & ncaa_by_year$sport_code < 37, "gender"] <- "Female"
+# ncaa_by_year[ncaa_by_year$sport_code ==37, "gender"] <- "Mixed"
 #may need to execute this sort of code for the state_multiyr_ncaa
 
 write.csv(multiyr_ncaa, "multiyr_ncaa.csv")
-write.csv(ncaa_by_year, "ncaa_by_year.csv")
+#write.csv(ncaa_by_year, "ncaa_by_year.csv")
 write.csv(state_multiyr_ncaa, "state_multiyr_ncaa.csv")
 write.csv(state_names, "states.csv")
-write.csv(leafletdf, "leafletdf.csv")
+write.csv(leafletdf, "leafletdf.csv") 
